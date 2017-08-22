@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_marginTop="30dp"
+        android:layout_width="239dp"
+        android:layout_height="274dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/log2o" />
+    <Button
+        android:id="@+id/searchButton"
+        android:onClick="searchButton"
+
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:background="@drawable/background"
+        android:text="Let's Search"
+        android:textColor="#ffff"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>

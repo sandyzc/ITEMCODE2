@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:fontFamily="cursive"
+            android:text="Keyword:"
+            android:textColor="#ffff"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/searchkeyword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1000"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textColor="#ffff"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="cursive"
+            android:text="Department :"
+            android:textColor="#ffff"
+            android:textSize="30dp"
+            android:layout_weight="1"
+            />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_marginTop="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/keywordSearch"
+        android:onClick="keyWordSearch"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:text="Search"
+        android:textColor="#ECEFF1"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        />
+<ListView
+    android:id="@+id/searlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:dividerHeight="2dp"
+
+    >
+
+</ListView>
+
+
+</LinearLayout>
