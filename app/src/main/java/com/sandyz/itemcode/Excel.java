@@ -20,6 +20,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class Excel extends ListActivity {
     public static final String id = "_id";// 0 integer
     public static final String CODE = "code";
     public static final String Description = "description";
-    public static final String EQUIPMENT_NAME= "equipment_namr";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class Excel extends ListActivity {
         lbl = (TextView) findViewById(R.id.txtresulttext);
         lv = getListView();
         tableName = "info";
+
 
         btnimport.setOnClickListener(new View.OnClickListener() {
 
@@ -64,16 +66,6 @@ public class Excel extends ListActivity {
 
             }
         });
-        ArrayList<HashMap<String, String>> myList = controller.getCodes();
-        if (myList.size() != 0) {
-            lv = getListView();
-            ListAdapter adapter = new SimpleAdapter(Excel.this, myList,
-                    R.layout.v, new String[]{CODE,Description,EQUIPMENT_NAME},
-                    new int[]{R.id.txtcode, R.id.txtdescprip,
-                            R.id.txtequip});
-            setListAdapter(adapter);
-        }
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -92,7 +84,7 @@ public class Excel extends ListActivity {
                             wb = new HSSFWorkbook(inStream);
                             inStream.close();
                         } catch (IOException e) {
-                            lbl.setText("First "+e.getMessage().toString());
+                            lbl.setText("First " + e.getMessage().toString());
                             e.printStackTrace();
                         }
 
@@ -104,7 +96,7 @@ public class Excel extends ListActivity {
 
                         Sheet sheet2 = null;
                         if (wb != null) {
-                            sheet2 = wb.getSheetAt(1);
+                            sheet2 = wb.getSheetAt(0);
                         }
                         if (sheet1 == null) {
                             return;
@@ -116,10 +108,10 @@ public class Excel extends ListActivity {
                         dbAdapter.open();
                         //dbAdapter.delete();
                         ///////////dbAdapter.close();
-                       // dbAdapter.open();
+                        dbAdapter.open();
                         Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet1);
 
-                        dbAdapter.close();
+                        // dbAdapter.close();
 
                         dbAdapter.open();
                         Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet2);
@@ -135,11 +127,58 @@ public class Excel extends ListActivity {
                 if (myList.size() != 0) {
                     ListView lv = getListView();
                     ListAdapter adapter = new SimpleAdapter(Excel.this, myList,
-                            R.layout.v, new String[]{CODE,Description,EQUIPMENT_NAME},
-                            new int[]{R.id.txtcode, R.id.txtdescprip,
-                                    R.id.txtequip});
+                            R.layout.v, new String[]{CODE, Description},
+                            new int[]{R.id.txtcode, R.id.txtdescprip});
                     setListAdapter(adapter);
                 }
+        }
+    }
+
+    public void onLineDbUpdate(String file) {
+
+        try {
+            AssetManager am = this.getAssets();
+            InputStream inputStream;
+            Workbook workbook = null;
+            try {
+                inputStream = new FileInputStream(file);
+                workbook = new HSSFWorkbook(inputStream);
+                inputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            XlsConec dbAdapter = new XlsConec(this);
+            Sheet sheet1 = null;
+            if (workbook != null) {
+                sheet1 = workbook.getSheetAt(0);
+            }
+
+            Sheet sheet2 = null;
+            if (workbook != null) {
+                sheet2 = workbook.getSheetAt(0);
+            }
+            if (sheet1 == null) {
+                return;
+            }
+            if (sheet2 == null) {
+                return;
+            }
+
+            dbAdapter.open();
+            //dbAdapter.delete();
+            ///////////dbAdapter.close();
+            dbAdapter.open();
+            Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet1);
+
+            // dbAdapter.close();
+
+            dbAdapter.open();
+            Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet2);
+            dbAdapter.close();
+        } catch (Exception ex) {
+
         }
     }
 }
