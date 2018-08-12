@@ -22,11 +22,7 @@ android {
 
 dependencies {
     //noinspection GradleCompatible
-    implementation 'com.google.firebase:firebase-messaging:11.8.0'
-    implementation 'com.google.firebase:firebase-database:11.8.0'
-    implementation 'com.google.firebase:firebase-storage:11.8.0'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
-    implementation 'com.google.firebase:firebase-ads:11.8.0'
+
     implementation 'com.ramotion.foldingcell:folding-cell:1.2.2'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -37,13 +33,13 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:palette-v7:27.1.1'
     implementation 'jp.wasabeef:recyclerview-animators:2.2.7'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
     implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
-    // https://mvnrepository.com/artifact/org.apache.poi/poi
+
     implementation 'org.apache.poi:poi:3.8'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
-    implementation files('libs/updatecheckerv2.jar')
+
+
 }
 
 
@@ -53,4 +49,4 @@ dependencies {
 
 
 
-apply plugin: 'com.google.gms.google-services'
+

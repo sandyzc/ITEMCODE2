@@ -15,7 +15,7 @@ public class XlsConec extends SQLiteOpenHelper {
 
 
     private static final String TableName = "ItemCode";
-    public static final String id = "_id";// 0 integer
+    public static final String id = "_id";
     private static final String CODE = "code";
     private static final String Description = "description";
     public static final int version = 1;

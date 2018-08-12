@@ -3,6 +3,7 @@ package com.sandyz.itemcode.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 import com.sandyz.itemcode.Beans;
@@ -10,10 +11,13 @@ import com.sandyz.itemcode.Beans;
 import java.util.ArrayList;
 
 
-public class DatabaseOpenHelper extends SQLiteAssetHelper {
+public class DatabaseOpenHelper extends SQLiteOpenHelper {
     private static String DATABASE_NAME = "ItemCode.db";
     private static final int DATABASE_VERSION = 1;
     private static final String TableName = "ItemCode";
+    public static final String id = "_id";
+    public static final int version = 1;
+
 
     public DatabaseOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -87,4 +91,13 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
 
     }
 
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
 }

@@ -34,8 +34,6 @@ public class Excel extends ListActivity {
     ListView lv;
     public static final int requestcode = 1;
     static String tableName;
-
-    public static final String Tablename = "ItemCode";
     public static final String id = "_id";// 0 integer
     public static final String CODE = "code";
     public static final String Description = "description";
@@ -98,16 +96,9 @@ public class Excel extends ListActivity {
                             return;
                         }
 
-
-                        dbAdapter.open();
-                        //dbAdapter.delete();
-                        ///////////dbAdapter.close();
                         dbAdapter.open();
                         Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet1);
 
-                        // dbAdapter.close();
-
-                        dbAdapter.close();
 
                     }
                 } catch (Exception ex) {
@@ -147,27 +138,13 @@ public class Excel extends ListActivity {
                 sheet1 = workbook.getSheetAt(0);
             }
 
-            Sheet sheet2 = null;
-            if (workbook != null) {
-                sheet2 = workbook.getSheetAt(0);
-            }
             if (sheet1 == null) {
                 return;
             }
-            if (sheet2 == null) {
-                return;
-            }
-
             dbAdapter.open();
-            //dbAdapter.delete();
-            ///////////dbAdapter.close();
             dbAdapter.open();
             Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet1);
 
-            // dbAdapter.close();
-
-            dbAdapter.open();
-            Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet2);
             dbAdapter.close();
         } catch (Exception ex) {
 
