@@ -25,6 +25,8 @@ import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.SlideInBottomAnimationAdapter;
 import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
+import com.sandyz.itemcode.RecyclerAdapter;
+
 
 public class SearchButton extends AppCompatActivity {
 
@@ -40,10 +42,6 @@ public class SearchButton extends AppCompatActivity {
 
         setContentView(R.layout.code_list);
 
-        MobileAds.initialize(this, "ca-app-pub-4711563913796281~3295854248");
-        AdView adView = (AdView) findViewById(R.id.adView2);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
 
 
 

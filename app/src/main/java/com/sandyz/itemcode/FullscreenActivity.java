@@ -45,13 +45,6 @@ public class FullscreenActivity extends AppCompatActivity {
         setContentView(R.layout.mainactivity);
 
 
-        MobileAds.initialize(this, "ca-app-pub-4711563913796281~3295854248");
-
-
-        AdView adView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-
         checker = new UpdateChecker(this, true);
 
 

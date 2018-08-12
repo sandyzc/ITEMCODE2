@@ -45,9 +45,9 @@ public class Excel extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnimport = (Button) findViewById(R.id.btnupload);
+        btnimport = findViewById(R.id.btnupload);
 
-        lbl = (TextView) findViewById(R.id.txtresulttext);
+        lbl = findViewById(R.id.txtresulttext);
         lv = getListView();
         tableName = "info";
 
@@ -94,16 +94,10 @@ public class Excel extends ListActivity {
                             sheet1 = wb.getSheetAt(0);
                         }
 
-                        Sheet sheet2 = null;
-                        if (wb != null) {
-                            sheet2 = wb.getSheetAt(0);
-                        }
                         if (sheet1 == null) {
                             return;
                         }
-                        if (sheet2 == null) {
-                            return;
-                        }
+
 
                         dbAdapter.open();
                         //dbAdapter.delete();
@@ -113,8 +107,6 @@ public class Excel extends ListActivity {
 
                         // dbAdapter.close();
 
-                        dbAdapter.open();
-                        Excel2SQLiteHelper.insertExcelToSqlite(dbAdapter, sheet2);
                         dbAdapter.close();
 
                     }

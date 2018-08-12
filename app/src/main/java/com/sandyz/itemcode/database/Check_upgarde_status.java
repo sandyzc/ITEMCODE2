@@ -43,7 +43,7 @@ public class Check_upgarde_status extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS"+Table_name);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+Table_name);
 
     }
 

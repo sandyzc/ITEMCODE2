@@ -9,6 +9,43 @@ public class Beans {
     private String code;
     private String descp;
     private String equip;
+    private String pip_stock;
+
+    public String getPip_stock() {
+        return pip_stock;
+    }
+
+    public void setPip_stock(String pip_stock) {
+        this.pip_stock = pip_stock;
+    }
+
+    public String getFdy_stock() {
+        return fdy_stock;
+    }
+
+    public void setFdy_stock(String fdy_stock) {
+        this.fdy_stock = fdy_stock;
+    }
+
+    public String getPip_location() {
+        return pip_location;
+    }
+
+    public void setPip_location(String pip_location) {
+        this.pip_location = pip_location;
+    }
+
+    public String getFdy_location() {
+        return fdy_location;
+    }
+
+    public void setFdy_location(String fdy_location) {
+        this.fdy_location = fdy_location;
+    }
+
+    private String fdy_stock ;
+    private String pip_location;
+    private String fdy_location;
     private int id;
 
     public Beans() {

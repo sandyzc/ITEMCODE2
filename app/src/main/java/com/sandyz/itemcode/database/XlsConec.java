@@ -11,25 +11,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-
 public class XlsConec extends SQLiteOpenHelper {
-
 
 
     private static final String TableName = "ItemCode";
     public static final String id = "_id";// 0 integer
     private static final String CODE = "code";
     private static final String Description = "description";
-    private static final String EQUIPMENT_NAME = "equipment_namr";
-    private static final String Dept_code = "dept_code";
     public static final int version = 1;
+    private static final String pip_stock = "pip_stock";
+    private static final String fdy_stock = "fdy_stock";
+    private static final String pip_location = "pip_location";
+    private static final String fdy_location = "fdy_location";
     private static final String DbNAme = "ItemCode.db";
 
     private SQLiteDatabase database = null;
 
     public XlsConec(Context context) {
         super(context, DbNAme, null, version);
-        Context ctx = context;
 
     }
 
@@ -51,10 +50,15 @@ public class XlsConec extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String create_sql = "CREATE TABLE IF NOT EXISTS " + TableName + "("
+        String create_sql = "CREATE TABLE IF NOT EXISTS "
+                + TableName + "("
                 + id + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + CODE + " TEXT NULL ," + Description + " TEXT NULL,"
-                + EQUIPMENT_NAME + " TEXT NULL, " + Dept_code + ")";
+                + CODE + " TEXT,"
+                + Description + " TEXT,"
+                + pip_stock + " TEXT,"
+                + fdy_stock + " TEXT,"
+                + pip_location + " TEXT,"
+                + fdy_location + " TEXT)";
 
         sqLiteDatabase.execSQL(create_sql);
     }
@@ -85,7 +89,10 @@ public class XlsConec extends SQLiteOpenHelper {
                 HashMap<String, String> map = new HashMap<>();
                 map.put(CODE, cursor.getString(1));
                 map.put(Description, cursor.getString(2));
-                map.put(EQUIPMENT_NAME, cursor.getString(3));
+                map.put(pip_stock, cursor.getString(3));
+                map.put(fdy_stock, cursor.getString(4));
+                map.put(pip_location, cursor.getString(5));
+                map.put(fdy_location, cursor.getString(6));
                 codeList.add(map);
             } while (cursor.moveToNext());
 
